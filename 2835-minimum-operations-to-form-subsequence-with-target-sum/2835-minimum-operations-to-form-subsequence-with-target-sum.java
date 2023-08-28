@@ -10,9 +10,8 @@ class Solution {
         if(sum < target) return -1;
         
         int op = 0;
-        while(!pq.isEmpty()) {
+        while(target > 0) {
             int curr = pq.remove();
-            //System.out.println(curr);
             if(sum - curr >= target) {
                 sum -= curr;
             }
@@ -25,7 +24,6 @@ class Solution {
                 pq.add(curr/2);
                 op++;
             }
-            if(target == 0) return op;
         }
         return op;
     }
