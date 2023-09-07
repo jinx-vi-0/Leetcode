@@ -1,12 +1,12 @@
 class Solution {
     public int arraySign(int[] nums) {
-        int neg = 0, pos = 0;
-        for(int i : nums) {
-            if(i == 0) return 0;
-            if(i < 0) neg++;
-            else pos++;
+        int countMinus = 0;
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] == 0)
+                return 0;
+            if(nums[i] < 0)
+                countMinus++;
         }
-        if((neg & 1) != 1) return 1;
-        else return -1;
+        return (countMinus & 1) == 1 ? -1 : 1;
     }
 }
