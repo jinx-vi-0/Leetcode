@@ -27,14 +27,10 @@ class Main {
 class Solution
 {
     //Function to find position of first set bit in the given number.
-    public static int getFirstSetBit(int n){
-        int pos = 1;
-        while(n>0) {
-            if((n & 1) != 0)
-                return pos;
-            pos++;
-            n = n>>1;
-        }
-        return 0;
+    public static int getFirstSetBit(int n) {
+        if (n == 0)
+            return 0;
+    
+        return (int)(Math.log10(n & -n) / Math.log10(2)) + 1;
     }
 }
