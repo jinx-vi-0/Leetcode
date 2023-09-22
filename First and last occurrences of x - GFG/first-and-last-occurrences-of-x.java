@@ -22,27 +22,27 @@ class GFG
         
         return list;
     }
-    int first_Occurence(int[] arr, int key) {
-        int st = 0, end = arr.length-1;
-        while(st < end) {
-            int mid = (st+end)/2;
-            if(arr[mid] < key)
-                st = mid + 1;
+    int first_Occurence(int[] a, int key) {
+        int l = -1, r = a.length;
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (a[m] < key)
+                l = m;
             else
-                end = mid;
+                r = m;
         }
-        return (arr[st] == key) ? st : -1;
+        return (a[r] == key) ? r : -1;
     }
-    int last_Occurence(int[] arr, int key) {
-        int st = 0, end = arr.length-1;
-        while(st < end) {
-            int mid = (st+end+1)/2;
-            if(arr[mid] <= key)
-                st = mid;
+    int last_Occurence(int[] a, int key) {
+        int l = 0, r = a.length;
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (a[m] <= key)
+                l = m;
             else
-                end = mid - 1;
+                r = m;
         }
-        return (arr[st] == key) ? st : -1;
+        return (a[l] == key) ? l : -1;
     }
 }
 
