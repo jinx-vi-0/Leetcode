@@ -17,29 +17,32 @@ class GFG
     {
         ArrayList<Integer> list = new ArrayList<>();
         
-        list.add(binarySearch(arr, x, 0));
-        list.add(binarySearch(arr, x, 1));
+        list.add(first_Occurence(arr, x));
+        list.add(last_Occurence(arr, x));
         
         return list;
     }
-    int binarySearch(int[] arr, int key, int flag) {
-        int st=0, end = arr.length-1;
-        while(st <= end) {
+    int first_Occurence(int[] arr, int key) {
+        int st = 0, end = arr.length-1;
+        while(st < end) {
             int mid = (st+end)/2;
-            if(arr[mid]==key) {
-                if(flag==0 && mid!=0 && arr[mid-1]==key)
-                    end=mid-1;
-                else if(flag==1 && mid!=arr.length-1 && arr[mid+1]==key)
-                    st=mid+1;
-                else
-                    return mid;
-            }
-            else if(arr[mid] > key)
-                end = mid-1;
+            if(arr[mid] < key)
+                st = mid + 1;
             else
-                st = mid+1;
+                end = mid;
         }
-        return -1;
+        return (arr[st] == key) ? st : -1;
+    }
+    int last_Occurence(int[] arr, int key) {
+        int st = 0, end = arr.length-1;
+        while(st < end) {
+            int mid = (st+end+1)/2;
+            if(arr[mid] <= key)
+                st = mid;
+            else
+                end = mid - 1;
+        }
+        return (arr[st] == key) ? st : -1;
     }
 }
 
