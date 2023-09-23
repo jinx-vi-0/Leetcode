@@ -39,18 +39,14 @@ class Solution {
     // n: size of array
     // Function to find equilibrium point in the array.
     public static int equilibriumPoint(long arr[], int n) {
-        //long curr_sum = 0;
-        //long total_sum = 0;
-        //for(long i : arr)
-        //    total_sum += i;
-        if(n == 1)
-            return 1;
-        for(int i=1; i<n; i++)
-            arr[i] = arr[i-1] + arr[i];
-        
-        for(int i=1; i<n; i++) {
-            if(arr[i-1] == arr[n-1] - arr[i])
+        long sum = 0, curr_sum = 0;
+        for(long i : arr)
+            sum += i;
+            
+        for(int i=0; i<n; i++) {
+            if(curr_sum == sum - curr_sum - arr[i])
                 return i+1;
+            curr_sum += arr[i];
         }
         return -1;
     }
