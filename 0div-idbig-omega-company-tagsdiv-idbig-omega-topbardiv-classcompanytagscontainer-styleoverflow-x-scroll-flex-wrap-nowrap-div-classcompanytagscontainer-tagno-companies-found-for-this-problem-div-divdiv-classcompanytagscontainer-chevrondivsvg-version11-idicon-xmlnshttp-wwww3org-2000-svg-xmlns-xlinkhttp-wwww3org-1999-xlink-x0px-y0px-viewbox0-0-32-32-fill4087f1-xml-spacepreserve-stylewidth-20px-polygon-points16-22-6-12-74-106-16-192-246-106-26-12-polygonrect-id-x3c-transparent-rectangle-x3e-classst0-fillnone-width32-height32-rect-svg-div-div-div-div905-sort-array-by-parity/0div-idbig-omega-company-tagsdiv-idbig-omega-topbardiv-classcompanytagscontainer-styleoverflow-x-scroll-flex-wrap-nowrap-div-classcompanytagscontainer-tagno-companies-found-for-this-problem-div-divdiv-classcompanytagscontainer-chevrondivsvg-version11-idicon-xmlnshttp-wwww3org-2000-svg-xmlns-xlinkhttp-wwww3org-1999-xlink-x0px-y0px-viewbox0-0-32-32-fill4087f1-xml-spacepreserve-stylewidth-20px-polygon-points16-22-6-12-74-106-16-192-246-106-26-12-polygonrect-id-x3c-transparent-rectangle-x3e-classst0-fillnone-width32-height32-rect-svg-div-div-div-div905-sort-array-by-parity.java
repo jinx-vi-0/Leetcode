@@ -3,14 +3,12 @@ class Solution {
         int n = nums.length;
         int[] ans = new int[n];
         
-        int idx=0;
-        for(int i=0; i<n; i++) {
-            if((nums[i] & 1) != 1)
-                ans[idx++] = nums[i];
-        }
-        for(int i=0; i<n; i++) {
-            if((nums[i] & 1) == 1)
-                ans[idx++] = nums[i];
+        int i=0, j=n-1;
+        for(int idx=0; idx<n; idx++) {
+            if((nums[idx] & 1) != 1)
+                ans[i++] = nums[idx];
+            else
+                ans[j--] = nums[idx];
         }
         return ans;
     }
