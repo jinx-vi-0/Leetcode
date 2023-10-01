@@ -6,10 +6,9 @@ class Solution {
             if((c[j] == ' ')) {
                 reverse(c, i, j-1);
                 i = j+1;
-            }
-            else if(j == c.length-1)
-                reverse(c, i, j);
+            } 
         }
+        reverse(c, i, c.length-1);
         return new String(c);
     }
     public void reverse(char[] c, int i, int j) {
