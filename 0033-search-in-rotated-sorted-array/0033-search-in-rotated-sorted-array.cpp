@@ -13,11 +13,12 @@ public:
             else
                 return helper(nums, key, mid+1, e);
         }
-        
-        if(key >= nums[mid] && key <= nums[e])
-            return helper(nums, key, mid+1, e);
-        
-        return helper(nums, key, s, mid-1);
+        else {
+            if(key >= nums[mid] && key <= nums[e])
+                return helper(nums, key, mid+1, e);
+            else
+                return helper(nums, key, s, mid-1);
+        }
     }
     int search(vector<int>& nums, int target) {
         return helper(nums, target, 0, nums.size()-1);
