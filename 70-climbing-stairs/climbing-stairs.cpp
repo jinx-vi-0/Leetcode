@@ -1,16 +1,16 @@
 class Solution {
 public:
-    int countWays(int n, vector<int> &dp) {
+    int climbStairs(int n) {
         if(n <= 2)
             return n;
+            
+        vector<int> dp(n+1);
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+        for(int i=3; i<=n; i++)
+            dp[i] = dp[i-1] + dp[i-2];
         
-        if(dp[n] != -1)
-            return dp[n];
-        
-        return dp[n] = countWays(n-1, dp) + countWays(n-2, dp);
-    }
-    int climbStairs(int n) {
-        vector<int> dp(n+1, -1);
-        return countWays(n, dp);
+        return dp[n];
     }
 };
