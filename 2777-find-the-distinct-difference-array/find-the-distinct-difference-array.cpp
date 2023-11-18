@@ -1,18 +1,14 @@
 class Solution {
 public:
     vector<int> distinctDifferenceArray(vector<int>& nums) {
-        int n = nums.size();
         vector<int> ans;
-        set<int> stl;
-
-        for(int i=0; i<n; i++) {
-            stl.insert(nums[i]);
-
-            set<int> str;
-            for(int j=n-1; j>i; j--) {
-                str.insert(nums[j]);
-            }
-            ans.push_back(stl.size() - str.size());
+        unordered_map<int,int> mp, rmp;
+        for(auto a : nums) rmp[a]++;
+        for(auto a : nums) {
+            mp[a]++;
+            rmp[a]--;
+            if(rmp[a] == 0) rmp.erase(a);
+            ans.push_back(mp.size() - rmp.size());
         }
         return ans;
     }
