@@ -5,7 +5,7 @@ class Solution {
         
         int max_coin = 0;
 
-        for(int i=n-2, j=0; i>=j; i-=2, j++)
+        for(int i=piles.length/3; i<piles.length; i+=2)
             max_coin += piles[i];
         
         return max_coin;
