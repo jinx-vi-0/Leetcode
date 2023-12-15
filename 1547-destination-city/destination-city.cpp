@@ -6,7 +6,7 @@ public:
             st.insert(path[0]);
             
         for(auto path : paths)
-            if(st.find(path[1]) == st.end())
+            if(!st.count(path[1]))
                 return path[1];
             
         return "";
