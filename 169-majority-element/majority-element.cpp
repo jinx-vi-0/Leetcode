@@ -16,15 +16,6 @@ public:
             else
                 cnt--;
         }
-
-        cnt = 0;
-        for (int i  : nums)
-            if (i == el)
-                cnt++;
-
-        if (cnt > (n / 2))
-            return el;
-
-        return -1;
+        return el;
     }
 };
