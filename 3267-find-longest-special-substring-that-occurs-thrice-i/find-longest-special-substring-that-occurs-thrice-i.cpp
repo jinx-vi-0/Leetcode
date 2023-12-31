@@ -1,17 +1,17 @@
 class Solution {
 public:
     int maximumLength(string s) {
-        map<pair<char,int>,int> mp;
-        int cnt = 0;
+        map<string,int> mp;
 
         for(int i=0; i<s.length(); i++) {
-            cnt = 1;
-            mp[{s[i], cnt}]++;
+            string tmp;
+            tmp += s[i];
+            mp[tmp]++;
 
-            for(int j=i; j<s.length()-1; j++) {
-                if(s[j] == s[j+1]) {
-                    cnt++;
-                    mp[{s[i], cnt}]++;
+            for(int j=i+1; j<s.length(); j++) {
+                if(s[j] == s[i]) {
+                    tmp += s[j];
+                    mp[tmp]++;
                 }
                 else
                     break;
@@ -19,9 +19,12 @@ public:
         }
 
         int ans = 0;
-        for(auto i : mp)
-            if(i.second >= 3)
-                ans = max(i.first.second, ans);
+        for(auto i : mp) {
+            if(i.second >= 3) {
+                int sz = i.first.length();
+                ans = max(sz, ans);
+            }
+        }
 
         return ans == 0 ? -1 : ans;
     }
