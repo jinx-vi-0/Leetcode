@@ -1,18 +1,14 @@
 class Solution {
 public:
     int minSteps(string s, string t) {
-        vector<int> f (26,0);
-        for(char c : s) {
-            f[c-'a']++;
-        }
+        vector<int> f(26);
         int ans = 0;
-        for(char c : t) {
-            if(f[c-'a'] < 1) {
-                ans++;
-                continue;
-            }
-            f[c-'a']--;
+        for(int i=0; i<s.length(); i++) {
+            f[s[i] - 'a']++;
+            f[t[i] - 'a']--;
         }
+        for(int i : f)
+            if(i > 0) ans += i;
         return ans;
     }
 };
