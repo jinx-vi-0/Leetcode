@@ -4,17 +4,15 @@ public:
         unordered_map<char, int> mp;
         for(auto c : s) mp[c]++;
         string ans = "";
-        for(int i=0; i<order.size(); i++) {
-            if(mp.find(order[i]) != mp.end()) {
-                for(int j=0; j<mp[order[i]]; j++)
-                    ans += order[i];
-                mp.erase(order[i]);
+        for(auto c : order) {
+            if(mp.find(c) != mp.end()) {
+                ans += string(mp[c], c);
+                mp.erase(c);
             }
         }
-        for(auto it : mp) {
-            for(int i=0; i<it.second; i++)
-                ans += it.first;
-        }
+        for(auto it : mp)
+            ans += string(it.second, it.first);
+
         return ans;
     }
 };
